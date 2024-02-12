@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
+import { SelectItem } from 'primeng/api';
 import { catchError, map, tap, throwError } from 'rxjs';
 import { Pizza } from 'src/app/interfaces/pizza';
 import { PizzaService } from 'src/app/services/pizza-service/pizza-service';
@@ -17,6 +18,12 @@ export class PizzaViewModelComponent implements OnInit {
   error = '';
   success = ''
 
+  selectedPizza!: Pizza
+
+  sortOrder!: number;
+  sortOptions!: SelectItem[];
+  sortField!: string;
+
   constructor( private client: HttpClient, private pizzaservice: PizzaService) {
   }
 
@@ -24,7 +31,25 @@ export class PizzaViewModelComponent implements OnInit {
 
   ngOnInit() { 
     this.getPizzas(); 
+
+    this.sortOptions = [
+        { label: 'Price High to Low', value: '!price' },
+        { label: 'Price Low to High', value: 'price' }
+    ];
+     
   }
+
+  onSortChange(event: any) {
+    let value = event.value;
+
+    if (value.indexOf('!') === 0) {
+        this.sortOrder = -1;
+        this.sortField = value.substring(1, value.length);
+    } else {
+        this.sortOrder = 1;
+        this.sortField = value;
+    }
+}
 
   getPizzas(): void {
     this.pizzaservice.getAll().subscribe({

@@ -1,9 +1,35 @@
-<div>
-    <h2>Pizza Names:</h2>
-    <ul>
-      <li *ngFor="let pizza of pizzas">{{ pizza.name }}</li>
-    </ul>
-  </div>
+ <p-table 
+ [value]="pizzas" 
+ [tableStyle]="{'min-width': '60rem'}"
+ selectionMode="single"
+ [(selection)]="selectedPizza"
+ >
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Pizzas
+            <p-button icon="pi pi-refresh"></p-button>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Size</th>
+            <th>Price</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pizza>
+        <tr>
+            <td>{{pizza.name}}</td>
+            <td><img [src]="'assets/' + pizza.name + '.png'" [alt]="pizza.name" width="100" class="shadow-4" /></td>
+            <td>{{pizza.size}} cm</td>
+            <td>{{pizza.price | currency:'EUR'}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            In total there are {{pizzas ? pizzas.length : 0 }} pizzas.
+        </div>
+    </ng-template>
+</p-table>
 
-   <p>pizza works</p>
-<p>pizza-viewModel works!</p>,

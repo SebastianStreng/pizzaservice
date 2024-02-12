@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { DataViewModule } from 'primeng/dataview';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -22,6 +25,10 @@ import { PizzaService } from '../services/pizza-service/pizza-service';
     ButtonModule,
     MenubarModule,
     DataViewModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TableModule
   ],
   exports: [
     PizzaViewModelComponent,
