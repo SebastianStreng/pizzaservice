@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
+
 
 
 import { PizzaViewModelComponent } from './pizza-viewModel.component';
@@ -12,6 +14,7 @@ import { PizzaViewModelComponent } from './pizza-viewModel.component';
   imports: [
     CommonModule,
     HttpClientModule,
+    ButtonModule
   ],
   exports: [
     PizzaViewModelComponent,
