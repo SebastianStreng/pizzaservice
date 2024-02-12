@@ -17,8 +17,7 @@ export class PizzaViewModelComponent implements OnInit {
   error = '';
   success = ''
 
-
-  constructor( private client: HttpClient) {
+  constructor( private client: HttpClient, private pizzaservice: PizzaService) {
   }
 
   baseUrl = 'http://localhost/api';
@@ -28,7 +27,7 @@ export class PizzaViewModelComponent implements OnInit {
   }
 
   getPizzas(): void {
-    this.getAll().subscribe({
+    this.pizzaservice.getAll().subscribe({
       next: (data: Pizza[]) => {
         this.pizzas = data;
         this.success = "Successful retrieval of the pizzas";
@@ -40,23 +39,5 @@ export class PizzaViewModelComponent implements OnInit {
       // Optional: complete callback, falls du eine Aktion ausführen willst, wenn das Observable fertig ist
       complete: () => console.log('Pizzas fetch complete') 
     });
-  }
-
-  getAll() {
-    return this.client.get<{data: Pizza[]}>(`${this.baseUrl}/list`).pipe(
-      tap(r => console.log(r)),
-      map(response => response.data), // Extracting the data array from the response
-      map(pizzas => pizzas.map(pizza => ({
-        name: pizza.name,
-        size: pizza.size, 
-        price: pizza.price,
-        id: pizza.id,
-        imagePath: pizza.imagePath
-      }))), // Converting size, price, and id to the correct types
-      catchError((error: any) => {
-        console.error('Error fetching data:', error);
-        return throwError(() => new Error('Error fetching data'));
-      })
-    );
   }
 }
