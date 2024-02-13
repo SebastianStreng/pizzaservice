@@ -1,15 +1,20 @@
-<p>customizer works!</p>
+
+<p-card class = "card" [style]="{ width: '1200px', height:'800px',  margin: 'auto'}">
+  <p-header style="font-size:300%;"> Customize Your Own Pizza via Drag & Drop!</p-header>
+<p>
+  Please choose your ingredients. Every pizza automatically includes tomato
+  sauce and cheese!
+</p>
 
 <div class="card">
   <p-pickList
     [source]="ingredients"
     [target]="selectedIngredients"
-    sourceHeader="Available"
+    sourceHeader="ingredients"
     targetHeader="Selected"
     [dragdrop]="true"
     [responsive]="true"
-    [sourceStyle]="{ height: '30rem' }"
-    [targetStyle]="{ height: '30rem' }"
+
     breakpoint="1400px"
   >
     <ng-template let-product pTemplate="item">
@@ -26,8 +31,9 @@
             <span>{{ product.category }}</span>
           </div>
         </div>
-        <span class="font-bold text-900">{{ '$' + product.price }}</span>
+        <span class="font-bold text-900">{{ "$" + product.price }}</span>
       </div>
     </ng-template>
   </p-pickList>
 </div>
+</p-card>

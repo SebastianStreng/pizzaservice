@@ -63,4 +63,6 @@ export class PizzaViewModelComponent implements OnInit {
       complete: () => console.log('Pizzas fetch complete'),
     });
   }
+
+
 }

@@ -7,12 +7,14 @@ import { DataViewModule } from 'primeng/dataview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
+import { PickListModule } from 'primeng/picklist';
+import { CardModule } from 'primeng/card';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 import { PizzaViewModelComponent } from './pizza-viewModel/pizza-viewModel.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PizzaService } from '../services/pizza-service/pizza-service';
 import { CustomizerComponent } from './customizer/customizer.component';
-import { PickListModule } from 'primeng/picklist';
 
 @NgModule({
   declarations: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
@@ -26,7 +28,9 @@ import { PickListModule } from 'primeng/picklist';
     FormsModule,
     ReactiveFormsModule,
     TableModule,
-    PickListModule
+    PickListModule,
+    CardModule,
+    TabMenuModule
   ],
   exports: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
 })
