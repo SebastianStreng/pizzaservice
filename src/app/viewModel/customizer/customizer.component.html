@@ -1,1 +1,33 @@
-<p>customizer works!</p>,
+<p>customizer works!</p>
+
+<div class="card">
+  <p-pickList
+    [source]="ingredients"
+    [target]="selectedIngredients"
+    sourceHeader="Available"
+    targetHeader="Selected"
+    [dragdrop]="true"
+    [responsive]="true"
+    [sourceStyle]="{ height: '30rem' }"
+    [targetStyle]="{ height: '30rem' }"
+    breakpoint="1400px"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="flex flex-wrap p-2 align-items-center gap-3">
+        <img
+          [src]="'assets/ingredients/' + product.name + '.png'"
+          [alt]="product.name"
+          width="100"
+          class="shadow-4"
+        />
+        <div class="flex-1 flex flex-column gap-2">
+          <span class="font-bold">{{ product.name }}</span>
+          <div class="flex align-items-center gap-2">
+            <span>{{ product.category }}</span>
+          </div>
+        </div>
+        <span class="font-bold text-900">{{ '$' + product.price }}</span>
+      </div>
+    </ng-template>
+  </p-pickList>
+</div>

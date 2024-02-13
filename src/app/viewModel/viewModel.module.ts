@@ -12,6 +12,7 @@ import { PizzaViewModelComponent } from './pizza-viewModel/pizza-viewModel.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { PizzaService } from '../services/pizza-service/pizza-service';
 import { CustomizerComponent } from './customizer/customizer.component';
+import { PickListModule } from 'primeng/picklist';
 
 @NgModule({
   declarations: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
@@ -25,6 +26,7 @@ import { CustomizerComponent } from './customizer/customizer.component';
     FormsModule,
     ReactiveFormsModule,
     TableModule,
+    PickListModule
   ],
   exports: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
 })
