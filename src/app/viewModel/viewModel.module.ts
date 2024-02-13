@@ -8,17 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 
-
-
 import { PizzaViewModelComponent } from './pizza-viewModel/pizza-viewModel.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PizzaService } from '../services/pizza-service/pizza-service';
+import { CustomizerComponent } from './customizer/customizer.component';
 
 @NgModule({
-  declarations: [
-    PizzaViewModelComponent,
-    NavbarComponent
-  ],
+  declarations: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -28,13 +24,8 @@ import { PizzaService } from '../services/pizza-service/pizza-service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    TableModule
+    TableModule,
   ],
-  exports: [
-    PizzaViewModelComponent,
-    NavbarComponent
-  ],
+  exports: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
 })
-export class ViewModelModule { 
-  
-}
+export class ViewModelModule {}

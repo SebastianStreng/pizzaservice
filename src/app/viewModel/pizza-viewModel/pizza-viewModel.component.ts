@@ -16,53 +16,51 @@ import { PizzaService } from 'src/app/services/pizza-service/pizza-service';
 export class PizzaViewModelComponent implements OnInit {
   pizzas: Pizza[] = [];
   error = '';
-  success = ''
+  success = '';
 
-  selectedPizza!: Pizza
+  selectedPizza!: Pizza;
 
   sortOrder!: number;
   sortOptions!: SelectItem[];
   sortField!: string;
 
-  constructor( private client: HttpClient, private pizzaservice: PizzaService) {
-  }
+  constructor(private client: HttpClient, private pizzaservice: PizzaService) {}
 
   baseUrl = 'http://localhost/api';
 
-  ngOnInit() { 
-    this.getPizzas(); 
+  ngOnInit() {
+    this.getPizzas();
 
     this.sortOptions = [
-        { label: 'Price High to Low', value: '!price' },
-        { label: 'Price Low to High', value: 'price' }
+      { label: 'Price High to Low', value: '!price' },
+      { label: 'Price Low to High', value: 'price' },
     ];
-     
   }
 
   onSortChange(event: any) {
     let value = event.value;
 
     if (value.indexOf('!') === 0) {
-        this.sortOrder = -1;
-        this.sortField = value.substring(1, value.length);
+      this.sortOrder = -1;
+      this.sortField = value.substring(1, value.length);
     } else {
-        this.sortOrder = 1;
-        this.sortField = value;
+      this.sortOrder = 1;
+      this.sortField = value;
     }
-}
+  }
 
   getPizzas(): void {
     this.pizzaservice.getAll().subscribe({
       next: (data: Pizza[]) => {
         this.pizzas = data;
-        this.success = "Successful retrieval of the pizzas";
+        this.success = 'Successful retrieval of the pizzas';
       },
       error: (err) => {
         console.error(err);
-        this.error = "An error occurred while fetching data";
+        this.error = 'An error occurred while fetching data';
       },
       // Optional: complete callback, falls du eine Aktion ausführen willst, wenn das Observable fertig ist
-      complete: () => console.log('Pizzas fetch complete') 
+      complete: () => console.log('Pizzas fetch complete'),
     });
   }
 }

@@ -1,36 +1,40 @@
- <p-table 
- [value]="pizzas" 
- [tableStyle]="{'min-width': '60rem'}"
- selectionMode="single"
- [(selection)]="selectedPizza"
- >
-    <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
-            Pizzas
-        </div>
-    </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Size</th>
-            <th>Price</th>
-            <th>Cart</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-pizza>
-        <tr>
-            <td>{{pizza.name}}</td>
-            <td><img [src]="'assets/' + pizza.name + '.png'" [alt]="pizza.name" width="100" class="shadow-4" /></td>
-            <td>{{pizza.size}} cm</td>
-            <td>{{pizza.price | currency:'EUR'}}</td>
-            <td><p-button icon="pi pi-cart-plus"></p-button></td>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-        <div class="flex align-items-center justify-content-between">
-            In total there are {{pizzas ? pizzas.length : 0 }} pizzas.
-        </div>
-    </ng-template>
+<p-table
+  [value]="pizzas"
+  [tableStyle]="{ 'min-width': '60rem' }"
+  selectionMode="single"
+  [(selection)]="selectedPizza"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">Pizzas</div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Size</th>
+      <th>Price</th>
+      <th>Cart</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-pizza>
+    <tr>
+      <td>{{ pizza.name }}</td>
+      <td>
+        <img
+          [src]="'assets/pizzaImages/' + pizza.name + '.png'"
+          [alt]="pizza.name"
+          width="100"
+          class="shadow-4"
+        />
+      </td>
+      <td>{{ pizza.size }} cm</td>
+      <td>{{ pizza.price | currency : "EUR" }}</td>
+      <td><p-button icon="pi pi-cart-plus"></p-button></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="flex align-items-center justify-content-between">
+      In total there are {{ pizzas ? pizzas.length : 0 }} pizzas.
+    </div>
+  </ng-template>
 </p-table>
-
