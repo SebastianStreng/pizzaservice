@@ -78,6 +78,7 @@
     <span class="p-float-label">
       <textarea
         id="float-input"
+        pInputTextarea ="specialWish"
         rows="7"
         style="width: 100%"
         pInputTextarea
@@ -108,16 +109,20 @@
         <th>Price</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-customer>
+    <ng-template pTemplate="body" let-order>
       <tr>
-        <td>{{ order.ingredients }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let ingredient of order.ingredients">{{ ingredient.name }}</li>
+          </ul>
+        </td>
         <td>{{ order.price }}</td>
       </tr>
-      <ng-template pTemplate="footer">
-        <tr>
-          <label>Total Price</label>
-        </tr>
-      </ng-template>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <label>Total Price</label>
+      </tr>
     </ng-template>
   </p-table>
 </p-card>

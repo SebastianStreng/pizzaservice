@@ -11,23 +11,35 @@ export class CustomizerComponent implements OnInit {
   ingredients: ingredient[] = [];
   selectedIngredients: ingredient[] = [];
   order!: order;
-  orders: order[]= [];
+  orders: order[] = [];
+  specialWish!: string;
+
+  PlaceOrder() {}
 
 
+  AddToOrder() {
+    const newOrder: order = {
+      ingredients: [...this.selectedIngredients], // Erstelle eine tiefe Kopie von selectedIngredients
+      price:   8 + this.selectedIngredients.reduce((total, ingredient) => total + ingredient.price, 0),
+      specialWish: this.specialWish,
+    };
 
-  PlaceOrder(){
+    this.orders.push(newOrder);
 
+    this.selectedIngredients.forEach(ingredient => {
+      
+    });
   }
 
-  AddToOrder(){
 
+  RestoreOrder() {
+    this.selectedIngredients.forEach(ingredient => {
+      const index = this.ingredients.findIndex(i => i.name === ingredient.name);
+      if (index !== -1) {
+        this.ingredients.splice(index, 1);
+      }
+    });
   }
-
-  RestoreOrder(){
-
-  }
-
-
 
   ngOnInit(): void {
     this.ingredients = [
@@ -42,8 +54,6 @@ export class CustomizerComponent implements OnInit {
       { name: 'Sausages', vegan: false, price: 2 },
       { name: 'Corn', vegan: false, price: 2 },
       { name: 'Mushroom', vegan: false, price: 2 },
-
     ];
   }
 }
-
