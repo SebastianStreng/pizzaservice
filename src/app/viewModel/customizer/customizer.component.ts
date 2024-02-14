@@ -26,19 +26,16 @@ export class CustomizerComponent implements OnInit {
 
     this.orders.push(newOrder);
 
-    this.selectedIngredients.forEach(ingredient => {
-      
-    });
+    this.RestoreOrder();
+
   }
 
 
   RestoreOrder() {
-    this.selectedIngredients.forEach(ingredient => {
-      const index = this.ingredients.findIndex(i => i.name === ingredient.name);
-      if (index !== -1) {
-        this.ingredients.splice(index, 1);
-      }
+    this.selectedIngredients.forEach(element => {
+      this.ingredients.unshift(element);
     });
+    this.selectedIngredients = [];
   }
 
   ngOnInit(): void {

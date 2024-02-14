@@ -107,6 +107,7 @@
       <tr>
         <th>Ingredients</th>
         <th>Price</th>
+        <th>Special Wishes</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-order>
@@ -117,6 +118,7 @@
           </ul>
         </td>
         <td>{{ order.price }}</td>
+        <td>{{order.specialWish}}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="footer">
