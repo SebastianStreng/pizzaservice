@@ -78,10 +78,10 @@
     <span class="p-float-label">
       <textarea
         id="float-input"
-        pInputTextarea ="specialWish"
+        pInputTextarea
+        [(ngModel)]="specialWish"
         rows="7"
         style="width: 100%"
-        pInputTextarea
       ></textarea>
       <label for="float-input">Special Wishes</label>
     </span>
@@ -114,11 +114,13 @@
       <tr>
         <td>
           <ul>
-            <li *ngFor="let ingredient of order.ingredients">{{ ingredient.name }}</li>
+            <li *ngFor="let ingredient of order.ingredients">
+              {{ ingredient.name }}
+            </li>
           </ul>
         </td>
         <td>{{ order.price }}</td>
-        <td>{{order.specialWish}}</td>
+        <td>{{ order.specialWish }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="footer">

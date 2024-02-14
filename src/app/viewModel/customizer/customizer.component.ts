@@ -14,29 +14,30 @@ export class CustomizerComponent implements OnInit {
   orders: order[] = [];
   specialWish!: string;
 
-  PlaceOrder() {}
-
-
   AddToOrder() {
     const newOrder: order = {
       ingredients: [...this.selectedIngredients], // Erstelle eine tiefe Kopie von selectedIngredients
-      price:   8 + this.selectedIngredients.reduce((total, ingredient) => total + ingredient.price, 0),
+      price:
+        8 +
+        this.selectedIngredients.reduce(
+          (total, ingredient) => total + ingredient.price,
+          0
+        ),
       specialWish: this.specialWish,
     };
-
     this.orders.push(newOrder);
-
     this.RestoreOrder();
-
   }
 
-
   RestoreOrder() {
-    this.selectedIngredients.forEach(element => {
+    this.selectedIngredients.forEach((element) => {
       this.ingredients.unshift(element);
     });
     this.selectedIngredients = [];
+    this.specialWish = ""; 
   }
+
+  PlaceOrder() {}
 
   ngOnInit(): void {
     this.ingredients = [
