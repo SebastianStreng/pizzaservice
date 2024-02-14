@@ -99,6 +99,9 @@
 
   <p-table
     [value]="orders"
+    selectionMode="single"
+    [(selection)]="selectedOrder"
+    dataKey="selectedOrder.id"
     [scrollable]="true"
     scrollHeight="400px"
     [tableStyle]="{ 'min-width': '50rem' }"
@@ -111,6 +114,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-order>
+      <tr [pSelectableRow]="order"></tr>
       <tr>
         <td>
           <ul>

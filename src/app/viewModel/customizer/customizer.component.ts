@@ -13,9 +13,12 @@ export class CustomizerComponent implements OnInit {
   order!: order;
   orders: order[] = [];
   specialWish!: string;
+  selectedOrder!: order;
+
 
   AddToOrder() {
     const newOrder: order = {
+      id: this.generateRandomValue(),
       ingredients: [...this.selectedIngredients], // Erstelle eine tiefe Kopie von selectedIngredients
       price:
         8 +
@@ -34,10 +37,20 @@ export class CustomizerComponent implements OnInit {
       this.ingredients.unshift(element);
     });
     this.selectedIngredients = [];
-    this.specialWish = ""; 
+    this.specialWish = '';
   }
 
+  DeleteSelectedOrders() {}
+
+  DeteleAllOrders() {}
+
   PlaceOrder() {}
+
+  generateRandomValue(): number {
+    const min = 100000;
+    const max = 999999;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   ngOnInit(): void {
     this.ingredients = [
