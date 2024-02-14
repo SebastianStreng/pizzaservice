@@ -1,51 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navbar with Background Image</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0; /* Hintergrundfarbe für den Rest der Seite */
-    }
-
-    .navbar {
-      background-image: url('assets/headerImages/backround2.png'); /* Pfad zum Hintergrundbild */
-      background-size: cover; /* Das Bild wird so skaliert, dass es die gesamte Navbar bedeckt */
-      background-position: center; /* Das Bild wird zentriert */
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Beispiel für einen Schatten für die Navbar */
-    }
-
-    .navbar-logo {
-      width: 50px; /* Breite des Logos */
-      height: auto; /* Automatische Anpassung der Höhe basierend auf der Breite */
-    }
-
-    .navbar-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .navbar-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-    }
-  </style>
+  <link rel="stylesheet" href="navbar.component.css">
 </head>
 <body>
 
 <div class="navbar">
-  <img  class="navbar-logo">
+  <img class="navbar-logo">
   <div class="navbar-links">
     <a href="#" class="navbar-link">Home</a>
     <a href="#" class="navbar-link">About</a>
@@ -53,13 +18,14 @@
   </div>
 </div>
 
-<!-- Hier können Sie den Inhalt Ihrer Seite hinzufügen -->
 
 </body>
 </html>
 
-<p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)"></p-tabMenu>
-<button type="button" pButton pRipple label="Activate Last" (click)="AddToCart()" class="mb-3"></button>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)"></p-tabMenu>
+  <button type="button" pButton pRipple label="Activate Last" (click)="AddToCart()" class="mb-3"></button>
+</div>
 
 
 <!-- <div class="card">

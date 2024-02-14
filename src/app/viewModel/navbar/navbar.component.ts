@@ -23,15 +23,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'File',
+        label: 'Pizza',
         icon: 'pi pi-fw pi-file',
       },
       {
-        label: 'Edit',
+        label: 'Contact',
         icon: 'pi pi-fw pi-pencil',
       },
       {
-        label: 'Users',
+        label: 'About Us',
         icon: 'pi pi-fw pi-user',
       },
       {
