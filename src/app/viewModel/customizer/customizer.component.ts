@@ -14,6 +14,7 @@ export class CustomizerComponent implements OnInit {
   orders: order[] = [];
   specialWish!: string;
   selectedOrder!: order;
+  count: number = 0;
 
 
   AddToOrder() {
@@ -30,6 +31,8 @@ export class CustomizerComponent implements OnInit {
     };
     this.orders.push(newOrder);
     this.RestoreOrder();
+
+    this.count = this.orders.length;
   }
 
   RestoreOrder() {

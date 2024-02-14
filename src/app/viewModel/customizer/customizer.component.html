@@ -108,6 +108,13 @@
   >
     <ng-template pTemplate="header">
       <tr>
+        <th [width]="10">
+          <p-button
+            icon="pi pi-trash"
+            badge="{{ count }}"
+            severity="danger"
+          ></p-button>
+        </th>
         <th>Ingredients</th>
         <th>Price</th>
         <th>Special Wishes</th>
