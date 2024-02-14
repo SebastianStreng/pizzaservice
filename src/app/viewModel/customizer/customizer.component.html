@@ -1,39 +1,123 @@
-
-<p-card class = "card" [style]="{ width: '1200px', height:'800px',  margin: 'auto'}">
-  <p-header style="font-size:300%;"> Customize Your Own Pizza via Drag & Drop!</p-header>
-<p>
-  Please choose your ingredients. Every pizza automatically includes tomato
-  sauce and cheese!
-</p>
-
-<div class="card">
-  <p-pickList
-    [source]="ingredients"
-    [target]="selectedIngredients"
-    sourceHeader="ingredients"
-    targetHeader="Selected"
-    [dragdrop]="true"
-    [responsive]="true"
-
-    breakpoint="1400px"
+<p-card
+  class="card"
+  [style]="{ width: '1200px', height: '1800px', margin: 'auto' }"
+>
+  <p-header style="font-size: 300%">
+    Customize Your Own Pizza via Drag & Drop!</p-header
   >
-    <ng-template let-product pTemplate="item">
-      <div class="flex flex-wrap p-2 align-items-center gap-3">
-        <img
-          [src]="'assets/ingredients/' + product.name + '.png'"
-          [alt]="product.name"
-          width="100"
-          class="shadow-4"
-        />
-        <div class="flex-1 flex flex-column gap-2">
-          <span class="font-bold">{{ product.name }}</span>
-          <div class="flex align-items-center gap-2">
-            <span>{{ product.category }}</span>
-          </div>
+  <p>
+    Please choose your ingredients. Every pizza automatically includes tomato
+    sauce and cheese!
+  </p>
+
+  <div class="card">
+    <p-pickList
+      [source]="ingredients"
+      [target]="selectedIngredients"
+      [dragdrop]="true"
+      [responsive]="true"
+      breakpoint="1400px"
+      [sourceStyle]="{ height: '35rem' }"
+      [targetStyle]="{ height: '35rem' }"
+    >
+      <ng-template let-product pTemplate="targetHeader">
+        <div
+          style="
+            height: 20px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <label>Selected</label>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"
+            (onClick)="RestoreOrder()"
+            size="small"
+          ></p-button>
         </div>
-        <span class="font-bold text-900">{{ "$" + product.price }}</span>
-      </div>
+      </ng-template>
+
+      <ng-template let-product pTemplate="sourceHeader">
+        <div
+          style="
+            height: 20px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <label>Ingredients</label>
+        </div>
+      </ng-template>
+      <ng-template let-product pTemplate="item">
+        <div class="flex flex-wrap p-2 align-items-center gap-3">
+          <img
+            [src]="'assets/ingredients/' + product.name + '.png'"
+            [alt]="product.name"
+            width="100"
+            class="shadow-4"
+          />
+          <div class="flex-1 flex flex-column gap-2">
+            <span class="font-bold">{{ product.name }}</span>
+            <div class="flex align-items-center gap-2">
+              <span>{{ product.category }}</span>
+            </div>
+          </div>
+          <span class="font-bold text-900">{{ "$" + product.price }}</span>
+        </div>
+      </ng-template>
+    </p-pickList>
+  </div>
+  <div style="margin: 40px">
+    <span class="p-float-label">
+      <textarea
+        id="float-input"
+        rows="7"
+        style="width: 100%"
+        pInputTextarea
+      ></textarea>
+      <label for="float-input">Special Wishes</label>
+    </span>
+  </div>
+  <div style="text-align: right">
+    <button
+      type="button"
+      pButton
+      pRipple
+      label="Add To Order"
+      (click)="AddToOrder()"
+      class="mb-3"
+    ></button>
+  </div>
+
+  <p-table
+    [value]="orders"
+    [scrollable]="true"
+    scrollHeight="400px"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Ingredients</th>
+        <th>Price</th>
+      </tr>
     </ng-template>
-  </p-pickList>
-</div>
+    <ng-template pTemplate="body" let-customer>
+      <tr>
+        <td>{{ order.ingredients }}</td>
+        <td>{{ order.price }}</td>
+      </tr>
+      <ng-template pTemplate="footer">
+        <tr>
+          <label>Total Price</label>
+        </tr>
+      </ng-template>
+    </ng-template>
+  </p-table>
 </p-card>

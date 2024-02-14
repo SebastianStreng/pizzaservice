@@ -34,14 +34,6 @@ export class NavbarComponent implements OnInit {
         label: 'About Us',
         icon: 'pi pi-fw pi-user',
       },
-      {
-        label: 'Events',
-        icon: 'pi pi-fw pi-calendar',
-      },
-      {
-        label: 'Quit',
-        icon: 'pi pi-fw pi-power-off',
-      },
     ];
   }
 }

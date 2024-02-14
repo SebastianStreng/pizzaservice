@@ -9,26 +9,25 @@ body {
   background-color: #f0f0f0;
 }
 
+/* navbar.component.css */
 .navbar {
   background-image: url('src/assets/headerImages/backround2.png');
   background-size: cover;
   background-position: center;
   height: 300px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  align-items: flex-start; /* Ausrichtung am oberen Rand der Seite */
+  padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-logo {
-  width: 50px;
-  height: auto;
-}
-
-.navbar-links {
+.navbar-rechts {
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  align-items: right; /* Diese Zeile korrigieren: sollte "flex-end" sein */
+  margin-left: auto; /* Elemente nach rechts schieben */
 }
 
 .navbar-link {
@@ -37,3 +36,4 @@ body {
   font-weight: bold;
   font-size: 16px;
 }
+

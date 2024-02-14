@@ -10,6 +10,7 @@ import { TableModule } from 'primeng/table';
 import { PickListModule } from 'primeng/picklist';
 import { CardModule } from 'primeng/card';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { PizzaViewModelComponent } from './pizza-viewModel/pizza-viewModel.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -30,7 +31,8 @@ import { CustomizerComponent } from './customizer/customizer.component';
     TableModule,
     PickListModule,
     CardModule,
-    TabMenuModule
+    TabMenuModule,
+    InputTextareaModule
   ],
   exports: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
 })

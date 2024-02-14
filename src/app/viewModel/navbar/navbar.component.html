@@ -10,11 +10,8 @@
 <body>
 
 <div class="navbar">
-  <img class="navbar-logo">
-  <div class="navbar-links">
-    <a href="#" class="navbar-link">Home</a>
-    <a href="#" class="navbar-link">About</a>
-    <a href="#" class="navbar-link">Contact</a>
+  <div class="navbar-rechts">
+    <p-button icon="pi pi-sign-out"></p-button>
   </div>
 </div>
 
@@ -22,10 +19,8 @@
 </body>
 </html>
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
   <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)"></p-tabMenu>
-  <button type="button" pButton pRipple label="Activate Last" (click)="AddToCart()" class="mb-3"></button>
-</div>
+
 
 
 <!-- <div class="card">
