@@ -1,6 +1,6 @@
 <p-card
   class="card"
-  [style]="{ width: '1200px', height: '1800px', margin: 'auto' }"
+  [style]="{ width: '1200px', height: '1600px', margin: 'auto' }"
 >
   <p-header style="font-size: 300%">
     Customize Your Own Pizza via Drag & Drop!</p-header
@@ -88,6 +88,7 @@
   </div>
   <div style="text-align: right">
     <button
+    style="margin-bottom: 20px;"
       type="button"
       pButton
       pRipple
@@ -101,7 +102,7 @@
     [value]="orders"
     selectionMode="single"
     [(selection)]="selectedOrder"
-    dataKey="selectedOrder.id"
+    dataKey="id"
     [scrollable]="true"
     scrollHeight="400px"
     [tableStyle]="{ 'min-width': '50rem' }"
@@ -112,6 +113,7 @@
           <p-button
             icon="pi pi-trash"
             badge="{{ count }}"
+            (onClick)="DeteleAllOrders()"
             severity="danger"
           ></p-button>
         </th>
@@ -123,6 +125,10 @@
     <ng-template pTemplate="body" let-order>
       <tr [pSelectableRow]="order"></tr>
       <tr>
+        <td>
+          <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger"
+          (onClick)="DeleteSelectedOrder(order)"></p-button>
+      </td>
         <td>
           <ul>
             <li *ngFor="let ingredient of order.ingredients">
@@ -136,8 +142,11 @@
     </ng-template>
     <ng-template pTemplate="footer">
       <tr>
-        <label>Total Price</label>
+        <label>Total Price: {{this.totalPrice}}</label>
       </tr>
     </ng-template>
   </p-table>
+  <div style="text-align: right">
+    <p-button label="Place Order"  icon="pi pi-check" iconPos="right"></p-button>
+  </div>
 </p-card>

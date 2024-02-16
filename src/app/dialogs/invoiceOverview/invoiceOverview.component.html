@@ -1,0 +1,81 @@
+<p-card
+  header="Invoice Overview"
+  class="card"
+  [style]="{ width: '800px', height: '800px', margin: 'auto' }"
+>
+<div class = "CredentialsContainer">
+<div class="horizontal-container">
+    <span class="p-float-label">
+        <input pInputText id="firstName" [(ngModel)]="firstName"/>
+        <label for="firstName">First Name</label>
+    </span>
+    <span class="p-float-label" style="margin: 20px;">
+        <input pInputText id="lastName" [(ngModel)]="lastName"/>
+        <label for="lastName">Last Name</label>
+    </span>
+</div>
+
+<div class="horizontal-container">
+    <span class="p-float-label">
+        <input pInputText id="streetname" [(ngModel)]="streetname"/>
+        <label for="streetname">Streetname</label>
+    </span>
+    <span class="p-float-label" style="margin: 20px;">
+        <input pInputText id="housenumber" [(ngModel)]="housenumber"/>
+        <label for="housenumber">Housenumber</label>
+    </span>
+</div>
+
+<div class="horizontal-container">
+    <span class="p-float-label">
+        <input pInputText id="postalCode" [(ngModel)]="postalCode"/>
+        <label for="postalCode">Postal Code</label>
+    </span>
+    <span class="p-float-label" style="margin: 20px;">
+        <input pInputText id="cityname" [(ngModel)]="cityname"/>
+        <label for="cityname">City</label>
+    </span>
+</div>
+</div>
+
+<div class="TableContainer">
+
+    <p-table
+    [value]="orders"
+    dataKey="id"
+    [scrollable]="true"
+    scrollHeight="400px"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Ingredients</th>
+        <th>Price</th>
+        <th>Special Wishes</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+      <tr [pSelectableRow]="order"></tr>
+      <tr>
+        <td>
+          <ul>
+            <li *ngFor="let ingredient of order.ingredients">
+              {{ ingredient.name }}
+            </li>
+          </ul>
+        </td>
+        <td>{{ order.price }}</td>
+        <td>{{ order.specialWish }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <label>Total Price: {{this.totalPrice}}</label>
+      </tr>
+    </ng-template>
+  </p-table>
+  <div style="text-align: right">
+    <p-button label="Order Now"  icon="pi pi-check" iconPos="right"></p-button>
+  </div>
+</div>
+</p-card>

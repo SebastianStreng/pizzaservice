@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.horizontal-container {
+  display: flex;
+  margin: 20px;
+  align-items: center; /* Oder eine andere Methode zum Ausrichten je nach Bedarf */
+}
+
+.CredentialsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

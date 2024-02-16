@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ingredient } from 'src/app/interfaces/ingredient';
 import { order } from 'src/app/interfaces/order';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-customizer',
   templateUrl: './customizer.component.html',
   styleUrls: ['./customizer.component.css'],
+  providers: [DialogService]
 })
 export class CustomizerComponent implements OnInit {
+
+  constructor(public dialogService: DialogService){}
+
+  ref: DynamicDialogRef | undefined;
+
   ingredients: ingredient[] = [];
   selectedIngredients: ingredient[] = [];
   order!: order;
@@ -15,12 +22,15 @@ export class CustomizerComponent implements OnInit {
   specialWish!: string;
   selectedOrder!: order;
   count: number = 0;
+  totalPrice!: number; 
 
+
+  PlaceOrder() {}
 
   AddToOrder() {
     const newOrder: order = {
       id: this.generateRandomValue(),
-      ingredients: [...this.selectedIngredients], // Erstelle eine tiefe Kopie von selectedIngredients
+      ingredients: [...this.selectedIngredients], 
       price:
         8 +
         this.selectedIngredients.reduce(
@@ -33,6 +43,7 @@ export class CustomizerComponent implements OnInit {
     this.RestoreOrder();
 
     this.count = this.orders.length;
+    this.updateTotalPrice(); 
   }
 
   RestoreOrder() {
@@ -43,16 +54,33 @@ export class CustomizerComponent implements OnInit {
     this.specialWish = '';
   }
 
-  DeleteSelectedOrders() {}
+  DeleteSelectedOrder(selectedOrder: order) {
+    const index = this.orders.findIndex(order => order.id === selectedOrder.id);
+    if (index !== -1) {
+      this.orders.splice(index, 1);
+      this.count = this.orders.length; 
+      this.updateTotalPrice();  
+    }
+  }
 
-  DeteleAllOrders() {}
+  DeteleAllOrders() {
+    this.orders = []; 
+    this.count = this.orders.length; 
+    this.updateTotalPrice();  
+  }
 
-  PlaceOrder() {}
 
   generateRandomValue(): number {
     const min = 100000;
     const max = 999999;
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  updateTotalPrice(){
+    this.totalPrice = 
+    this
+    .orders
+    .reduce((total, order) => total + order.price, 0);
   }
 
   ngOnInit(): void {
