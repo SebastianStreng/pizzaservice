@@ -33,7 +33,8 @@ export class CustomizerComponent implements OnInit {
   show() {
     this.ref = this.dialogService.open(InvoiceOverviewComponent, {
       data: {
-        ordersProperty: this.orders
+        ordersProperty: this.orders,
+        totalPriceProperty: this.totalPrice
       },
         header: 'Overview',
         width: '70%',
