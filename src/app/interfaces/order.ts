@@ -1,8 +1,8 @@
-import { ingredient } from './ingredient';
+import { Ingredient } from './ingredient';
 
-export interface order {
+export interface Order {
   id: number; 
-  ingredients: ingredient[];
+  ingredients: Ingredient[];
   price: number;
   specialWish: string;
 }

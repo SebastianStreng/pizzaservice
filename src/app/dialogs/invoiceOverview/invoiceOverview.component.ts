@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { order } from 'src/app/interfaces/order';
+import { Order } from 'src/app/interfaces/order';
 
 @Component({
   selector: 'app-invoice-overview',
@@ -22,7 +22,7 @@ export class InvoiceOverviewComponent implements OnInit {
   cityname!: string;  
 
   totalPrice! : number; 
-  orders: order[] = []; 
+  orders: Order[] = []; 
 
 
   ngOnInit(): void {

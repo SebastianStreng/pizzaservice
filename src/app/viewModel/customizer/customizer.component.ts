@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ingredient } from 'src/app/interfaces/ingredient';
-import { order } from 'src/app/interfaces/order';
+import { Ingredient } from 'src/app/interfaces/ingredient';
+import { Order } from 'src/app/interfaces/order';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { InvoiceOverviewComponent } from 'src/app/dialogs/invoiceOverview/invoiceOverview.component';
 
@@ -16,12 +16,12 @@ export class CustomizerComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  ingredients: ingredient[] = [];
-  selectedIngredients: ingredient[] = [];
-  order!: order;
-  orders: order[] = [];
+  ingredients: Ingredient[] = [];
+  selectedIngredients: Ingredient[] = [];
+  order!: Order;
+  orders: Order[] = [];
   specialWish!: string;
-  selectedOrder!: order;
+  selectedOrder!: Order;
   count: number = 0;
   totalPrice!: number; 
 
@@ -47,7 +47,7 @@ export class CustomizerComponent implements OnInit {
 }
 
   AddToOrder() {
-    const newOrder: order = {
+    const newOrder: Order = {
       id: this.generateRandomValue(),
       ingredients: [...this.selectedIngredients], 
       price:
@@ -73,7 +73,7 @@ export class CustomizerComponent implements OnInit {
     this.specialWish = '';
   }
 
-  DeleteSelectedOrder(selectedOrder: order) {
+  DeleteSelectedOrder(selectedOrder: Order) {
     const index = this.orders.findIndex(order => order.id === selectedOrder.id);
     if (index !== -1) {
       this.orders.splice(index, 1);
