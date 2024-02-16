@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ingredient } from 'src/app/interfaces/ingredient';
 import { order } from 'src/app/interfaces/order';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { InvoiceOverviewComponent } from 'src/app/dialogs/invoiceOverview/invoiceOverview.component';
 
 @Component({
   selector: 'app-customizer',
@@ -25,7 +26,24 @@ export class CustomizerComponent implements OnInit {
   totalPrice!: number; 
 
 
-  PlaceOrder() {}
+  PlaceOrder() {
+      this.show(); 
+  }
+
+  show() {
+    this.ref = this.dialogService.open(InvoiceOverviewComponent, {
+      data: {
+        ordersProperty: this.orders
+      },
+        header: 'Overview',
+        width: '70%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: true
+    });
+
+    this.ref.onClose.subscribe();
+}
 
   AddToOrder() {
     const newOrder: order = {
