@@ -1,1 +1,16 @@
-<app-navbar></app-navbar>
+<div class="backround">
+</div>
+<p-card 
+class="ngCard"
+[style]="{ width: '700px', height: '800px', margin: 'auto'}"
+>
+<div class="card" style="margin-top: 360px;">
+    <div class="card-info" style="display: flex; flex-direction: column; align-items: center;">
+        <app-moving-slices style="margin: 30px;"></app-moving-slices>
+        <p class="title" style="font-size: larger;">Welcome to Sebastian´s Pizza Service! </p>
+        <p class="title" style="margin-bottom: 10%;">Get Your Custom Pizza Now! </p>
+        <p-button label="Sign in" severity="secondary" (onClick)="openSignInDialog ()"></p-button>
+        <p-button label="Register" [style.margin-top]=" '10%' " severity="secondary" (onClick)="openRegisterDialog()"></p-button>
+    </div>
+</div>
+</p-card>
