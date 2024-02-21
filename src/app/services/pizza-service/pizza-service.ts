@@ -14,14 +14,14 @@ export class PizzaService {
 
     constructor(private http: HttpClient) { }
 
-  
+
       getAll() {
-    return this.http.get<{data: Pizza[]}>(`${this.baseUrl}/list`).pipe(
+    return this.http.get<{data: Pizza[]}>(`${this.baseUrl}/pizzas`).pipe(
       tap(r => console.log(r)),
       map(response => response.data), // Extracting the data array from the response
       map(pizzas => pizzas.map(pizza => ({
         name: pizza.name,
-        size: pizza.size, 
+        size: pizza.size,
         price: pizza.price,
         id: pizza.id,
         imagePath: pizza.imagePath

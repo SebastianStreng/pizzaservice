@@ -3,52 +3,51 @@
   class="card"
   [style]="{ width: '800px', height: '950px', margin: 'auto' }"
 >
-
-<div class = "CredentialsContainer">
+  <div class="CredentialsContainer">
     <div class="horizontal-container">
-        <span class="p-float-label">
-            <input pInputText id="username" [(ngModel)]="username"/>
-            <label for="username">Username</label>
-        </span>
-        <span class="p-float-label" style="margin: 20px;">
-            <input pInputText id="password" [(ngModel)]="password"/>
-            <label for="password">Password</label>
-        </span>
+      <span class="p-float-label">
+        <input pInputText id="username" [(ngModel)]="username" />
+        <label for="username">Username</label>
+      </span>
+      <span class="p-float-label" style="margin: 20px">
+        <input pInputText id="password" [(ngModel)]="password" />
+        <label for="password">Password</label>
+      </span>
     </div>
 
-<div class="horizontal-container">
-    <span class="p-float-label">
-        <input pInputText id="firstName" [(ngModel)]="firstName"/>
+    <div class="horizontal-container">
+      <span class="p-float-label">
+        <input pInputText id="firstName" [(ngModel)]="firstName" />
         <label for="firstName">First Name</label>
-    </span>
-    <span class="p-float-label" style="margin: 20px;">
-        <input pInputText id="lastName" [(ngModel)]="lastName"/>
+      </span>
+      <span class="p-float-label" style="margin: 20px">
+        <input pInputText id="lastName" [(ngModel)]="lastName" />
         <label for="lastName">Last Name</label>
-    </span>
-</div>
+      </span>
+    </div>
 
-
-<div class="horizontal-container">
-    <span class="p-float-label">
-        <input pInputText id="streetname" [(ngModel)]="streetname"/>
+    <div class="horizontal-container">
+      <span class="p-float-label">
+        <input pInputText id="streetname" [(ngModel)]="streetname" />
         <label for="streetname">Streetname</label>
-    </span>
-    <span class="p-float-label" style="margin: 20px;">
-        <input pInputText id="housenumber" [(ngModel)]="housenumber"/>
+      </span>
+      <span class="p-float-label" style="margin: 20px">
+        <input pInputText id="housenumber" [(ngModel)]="housenumber" />
         <label for="housenumber">Housenumber</label>
-    </span>
-</div>
+      </span>
+    </div>
 
-<div class="horizontal-container">
-    <span class="p-float-label">
-        <input pInputText id="postalCode" [(ngModel)]="postalCode"/>
+    <div class="horizontal-container">
+      <span class="p-float-label">
+        <input pInputText id="postalCode" [(ngModel)]="postalCode" />
         <label for="postalCode">Postal Code</label>
-    </span>
-    <span class="p-float-label" style="margin: 20px;">
-        <input pInputText id="cityname" [(ngModel)]="cityname"/>
+      </span>
+      <span class="p-float-label" style="margin: 20px">
+        <input pInputText id="cityname" [(ngModel)]="cityname" />
         <label for="cityname">City</label>
-    </span>
-</div>
+      </span>
+    </div>
 
-<div></div>
-</div>
+    <p-button label="Register" (onClick)="register()"></p-button>
+  </div>
+</p-card>
