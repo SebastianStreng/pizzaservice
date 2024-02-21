@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
   selector: 'app-sign-in',
   templateUrl: './signIn.component.html',
   styleUrl: './signIn.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnInit {
 
