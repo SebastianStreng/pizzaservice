@@ -8,7 +8,10 @@ import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
   //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnInit {
+  username!: string;
+  password!: string;
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
+  signIn() {}
 }

@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { PasswordModule } from 'primeng/password';
 
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ViewModelModule } from '../viewModel/viewModel.module';
@@ -18,9 +19,9 @@ import { SignInComponent } from './landingpage/signIn/signIn.component';
 
 @NgModule({
   declarations: [
-    LandingpageComponent, 
-    MovingSlicesComponent, 
-    RegisterComponent, 
+    LandingpageComponent,
+    MovingSlicesComponent,
+    RegisterComponent,
     SignInComponent
   ],
   imports: [
@@ -31,7 +32,8 @@ import { SignInComponent } from './landingpage/signIn/signIn.component';
     TableModule,
     InputTextModule,
     ViewModelModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    PasswordModule
   ],
   exports: [LandingpageComponent],
 })

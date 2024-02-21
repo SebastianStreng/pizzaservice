@@ -1,1 +1,20 @@
-<p>signIn works!</p>,
+<p-card
+  header="Sign In"
+  class="card"
+  [style]="{ width: '800px', height: '400px', margin: 'auto' }"
+>
+  <div class="CredentialsContainer">
+    <div class="horizontal-container">
+      <span class="p-float-label">
+        <input pInputText id="username" [(ngModel)]="username" />
+        <label for="username">Username</label>
+      </span>
+      <span class="p-float-label" style="margin: 20px">
+        <p-password [(ngModel)]="password" [toggleMask]="true"></p-password>
+        <label for="password">Password</label>
+      </span>
+    </div>
+
+    <p-button label="Sign In" (onClick)="signIn()"></p-button>
+  </div>
+</p-card>
