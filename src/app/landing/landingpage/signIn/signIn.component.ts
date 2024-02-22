@@ -1,44 +1,29 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
-import { DialogService } from 'primeng/dynamicdialog';
-import { User } from 'src/app/interfaces/User';
-import { UserService } from 'src/app/services/user-service/user-service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentification-service/authentification-service';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './signIn.component.html',
-  styleUrl: './signIn.component.css',
-  //changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./signIn.component.css'],
 })
 export class SignInComponent implements OnInit {
-  username!: string;
-  password!: string;
-  users: User[] = [];
-  user!: User;
-
+  username = '';
+  password = '';
   error = '';
-  success = '';
 
-  constructor(
-    public dialogService: DialogService,
-    private userService: UserService
-  ) {}
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  signIn() {}
-
-  getUsers(): void {
-    this.userService.getAll().subscribe({
-      next: (data: User[]) => {
-        this.users = data;
-        this.success = 'Successful retrieval of the users';
+  signIn() {
+    this.authService.login(this.username, this.password).subscribe(
+      () => {
+        this.router.navigate(['Customize']);
       },
-      error: (err) => {
-        console.error(err);
-        this.error = 'An error occurred while fetching data';
-      },
-      complete: () => console.log('Users fetch complete'),
-    });
+      (error) => {
+        this.error = 'Invalid username or password';
+      }
+    );
   }
 }

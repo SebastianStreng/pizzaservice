@@ -4,6 +4,10 @@ import { Order } from 'src/app/interfaces/order';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { InvoiceOverviewComponent } from 'src/app/dialogs/invoiceOverview/invoiceOverview.component';
 import { IngredientService } from 'src/app/services/ingredient-service/ingredient-service';
+import { AuthenticationService } from 'src/app/services/authentification-service/authentification-service';
+import { User } from 'src/app/interfaces/User';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-customizer',
@@ -12,11 +16,6 @@ import { IngredientService } from 'src/app/services/ingredient-service/ingredien
   providers: [DialogService],
 })
 export class CustomizerComponent implements OnInit {
-  constructor(
-    public dialogService: DialogService,
-    private ingredientService: IngredientService
-  ) {}
-
   ref: DynamicDialogRef | undefined;
 
   ingredients: Ingredient[] = [];
@@ -30,6 +29,26 @@ export class CustomizerComponent implements OnInit {
 
   error = '';
   success = '';
+
+  currentlyLoggedInUser!: User;
+
+  constructor(
+    public dialogService: DialogService,
+    private ingredientService: IngredientService,
+    private authService: AuthenticationService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.getIngredients();
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['Landing']);
+    }
+
+    this.authService.currentUser.subscribe((user) => {
+      this.currentlyLoggedInUser = user;
+    });
+  }
 
   PlaceOrder() {
     this.show();
@@ -106,10 +125,6 @@ export class CustomizerComponent implements OnInit {
       (total, order) => total + order.price,
       0
     );
-  }
-
-  ngOnInit(): void {
-    this.getIngredients();
   }
 
   getIngredients(): void {
