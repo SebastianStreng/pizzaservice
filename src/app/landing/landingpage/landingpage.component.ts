@@ -17,11 +17,17 @@ export class LandingpageComponent implements OnInit {
   constructor(public dialogService: DialogService){}
 
 openSignInDialog (){
-  this.ref = this.dialogService.open(SignInComponent, { header: 'Please type in your Username and Password to proceed'});
+  this.ref = this.dialogService
+  .open(
+    SignInComponent, 
+    { header: 'Please type in your Username and Password to proceed'});
 }
 
 openRegisterDialog(){
-  this.ref = this.dialogService.open(RegisterComponent, { header: 'Please register to order your first custom Pizza'});
+  this.ref = this.dialogService
+  .open(
+    RegisterComponent, 
+    { header: 'Please register to order your first custom Pizza'});
 }
 
   ngOnInit(): void { }

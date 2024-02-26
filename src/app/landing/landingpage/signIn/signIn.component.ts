@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthenticationService } from 'src/app/services/authentification-service/authentification-service';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './signIn.component.html',
   styleUrls: ['./signIn.component.css'],
+  providers: [DialogService]
 })
 export class SignInComponent implements OnInit {
   username = '';
   password = '';
   error = '';
 
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  ref!: DynamicDialogRef | undefined;
+
+  constructor(
+    private authService: AuthenticationService,
+     private router: Router, 
+     public dialogService: DialogService) {}
 
   ngOnInit(): void {}
 
@@ -20,6 +27,9 @@ export class SignInComponent implements OnInit {
     this.authService.login(this.username, this.password).subscribe(
       () => {
         this.router.navigate(['Customize']);
+        if (this.ref) {
+          this.ref.close();//doesnt work
+        }
       },
       (error) => {
         this.error = 'Invalid username or password';

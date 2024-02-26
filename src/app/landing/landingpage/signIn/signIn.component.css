@@ -21,3 +21,9 @@
   background-position: center;
   z-index: -1;
 }
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
