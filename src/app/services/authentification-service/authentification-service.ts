@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/User';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +16,7 @@ export class AuthenticationService {
 
   public loggedIn = this.loggedInSubject.asObservable();
   public currentUser = this.currentUserSubject.asObservable();
+  public loggedInUser!: User;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -22,6 +25,7 @@ export class AuthenticationService {
       tap((response: any) => {
         if (response && response.token) {
           localStorage.setItem('token', response.token);
+          this.loggedInUser = response.user;
           this.loggedInSubject.next(true);
           this.updateCurrentUser();
         }
@@ -35,6 +39,50 @@ export class AuthenticationService {
         throw error;
       })
     );
+  }
+
+  getCurrentUser(): User {
+    const token = localStorage.getItem('token');
+    try {
+      if (token) {
+        const decodedToken: any = jwtDecode(token);
+        return this.mapDecodedTokenToUser(decodedToken);
+      }
+    } catch (error) {
+      console.error('Failed to decode token:', error);
+    }
+    return this.getDefaultUser();
+  }
+
+  private mapDecodedTokenToUser(decodedToken: any): User {
+    if (decodedToken) {
+      return {
+        id: +decodedToken.user_id,
+        username: decodedToken.username,
+        password: '', // Passwort wird nicht im Token gespeichert
+        firstName: decodedToken.firstName,
+        lastName: decodedToken.lastName,
+        streetName: decodedToken.streetName,
+        houseNumber: decodedToken.houseNumber,
+        postalCode: decodedToken.postalCode,
+        city: decodedToken.city,
+      };
+    }
+    return this.getDefaultUser();
+  }
+
+  private getDefaultUser(): User {
+    return {
+      id: 0,
+      username: 'Guest',
+      password: '',
+      firstName: '',
+      lastName: '',
+      streetName: '',
+      houseNumber: '',
+      postalCode: '',
+      city: '',
+    };
   }
 
   logout(): void {
@@ -51,14 +99,16 @@ export class AuthenticationService {
     const token = localStorage.getItem('token');
 
     if (token) {
-      this.http.get(`${this.baseUrl}/user`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).subscribe(
-        (user: any) => this.currentUserSubject.next(user),
-        (error) => console.error('Failed to get current user:', error)
-      );
+      this.http
+        .get(`${this.baseUrl}/user`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .subscribe(
+          (user: any) => this.currentUserSubject.next(user),
+          (error) => console.error('Failed to get current user:', error)
+        );
     }
   }
 }

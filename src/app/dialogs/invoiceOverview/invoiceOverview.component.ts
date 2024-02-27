@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
-import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import {
+  DialogService,
+  DynamicDialogConfig,
+  DynamicDialogRef,
+} from 'primeng/dynamicdialog';
+import { User } from 'src/app/interfaces/User';
 import { Order } from 'src/app/interfaces/order';
 import { AuthenticationService } from 'src/app/services/authentification-service/authentification-service';
 
@@ -8,30 +13,23 @@ import { AuthenticationService } from 'src/app/services/authentification-service
   selector: 'app-invoice-overview',
   templateUrl: './invoiceOverview.component.html',
   styleUrl: './invoiceOverview.component.css',
-  providers: [DialogService]
+  providers: [DialogService],
   //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoiceOverviewComponent implements OnInit {
+  constructor(
+    private ref: DynamicDialogRef,
+    public config: DynamicDialogConfig,
+    private authService: AuthenticationService
+  ) {}
 
-  constructor(private ref: DynamicDialogRef, public config: DynamicDialogConfig, private authService: AuthenticationService){}
-
-  firstName!: string;
-  lastName!: string;
-  streetname!: string; 
-  housenumber!: number; 
-  postalCode!: string; 
-  cityname!: string;  
-
-  totalPrice! : number; 
-  orders: Order[] = []; 
-
+  totalPrice!: number;
+  orders: Order[] = [];
+  currentUser!: User;
 
   ngOnInit(): void {
-    this.orders = this.config.data.ordersProperty; 
-    this.totalPrice = this.config.data.totalPriceProperty; 
-
-    this.authService.currentUser.subscribe(user => {
-      this.firstName = user.firstName 
-    })
-   }
+    this.orders = this.config.data.ordersProperty;
+    this.totalPrice = this.config.data.totalPriceProperty;
+    this.currentUser = this.authService.getCurrentUser(); 
+  }
 }
