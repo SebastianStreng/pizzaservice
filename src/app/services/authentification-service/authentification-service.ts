@@ -15,7 +15,6 @@ export class AuthenticationService {
   private currentUserSubject = new BehaviorSubject<any>(null);
 
   public loggedIn = this.loggedInSubject.asObservable();
-  public currentUser = this.currentUserSubject.asObservable();
   public loggedInUser!: User;
 
   constructor(private http: HttpClient, private router: Router) {}

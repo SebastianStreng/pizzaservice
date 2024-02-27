@@ -44,10 +44,6 @@ export class CustomizerComponent implements OnInit {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['Landing']);
     }
-
-    this.authService.currentUser.subscribe((user) => {
-      this.currentlyLoggedInUser = user;
-    });
   }
 
   PlaceOrder() {
