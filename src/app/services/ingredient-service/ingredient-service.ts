@@ -22,7 +22,7 @@ export class IngredientService {
           ingredients.map((ingredient) => ({
             name: ingredient.name,
             vegan: ingredient.vegan,
-            price: ingredient.price,
+            price: Number(ingredient.price),
           }))
         ),
         catchError((error: any) => {

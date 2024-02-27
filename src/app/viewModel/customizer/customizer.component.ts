@@ -76,10 +76,10 @@ export class CustomizerComponent implements OnInit {
       ingredients: [...this.selectedIngredients],
       price:
         8 +
-        this.selectedIngredients.reduce(
+        Number(this.selectedIngredients.reduce(
           (total, ingredient) => total + ingredient.price,
           0
-        ),
+        )),
       specialWish: this.specialWish,
     };
     this.orders.push(newOrder);
