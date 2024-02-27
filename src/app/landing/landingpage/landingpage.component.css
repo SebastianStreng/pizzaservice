@@ -1,8 +1,8 @@
 .backround{
-  background-image: url('src/assets/headerImages/backround2.png');
+  background-image: url('src/assets/headerImages/navbarImage.png');
   background-size: cover;
   background-position: center;
-  height: 300px;
+  height: 400px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start; /* Ausrichtung am oberen Rand der Seite */
@@ -37,7 +37,7 @@
   transform: translate(-50%, -50%);
   z-index: 1;
  }
- 
+
  .card::after {
   position: absolute;
   content: "";
@@ -53,7 +53,7 @@
   background: var(--background);
   transition: opacity .5s;
  }
- 
+
  .card-info {
   --color: #181818;
   background: var(--color);
@@ -66,19 +66,18 @@
   overflow: visible;
   border-radius: .7rem;
  }
- 
+
  .card .title {
   font-weight: bold;
   letter-spacing: .1em;
  }
- 
+
  /*Hover*/
  .card:hover::after {
   opacity: 0;
  }
- 
+
  .card:hover .card-info {
   color: #f7ba2b;
   transition: color 1s;
  }
- 

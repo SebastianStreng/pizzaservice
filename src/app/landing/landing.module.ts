@@ -10,7 +10,7 @@ import { PasswordModule } from 'primeng/password';
 
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ViewModelModule } from '../viewModel/viewModel.module';
-import { MovingSlicesComponent } from './landingpage/movingSlices/movingSlices.component';
+import { MovingSlicesComponent } from '../specialEffects/movingSlices/movingSlices.component';
 import { RegisterComponent } from './landingpage/register/register.component';
 import { SignInComponent } from './landingpage/signIn/signIn.component';
 

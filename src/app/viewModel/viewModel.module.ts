@@ -17,6 +17,7 @@ import { PizzaViewModelComponent } from './pizza-viewModel/pizza-viewModel.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { PizzaService } from '../services/pizza-service/pizza-service';
 import { CustomizerComponent } from './customizer/customizer.component';
+import { MovingSlicesComponent } from '../specialEffects/movingSlices/movingSlices.component';
 
 @NgModule({
   declarations: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],

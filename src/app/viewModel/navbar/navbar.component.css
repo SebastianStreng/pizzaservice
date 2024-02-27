@@ -11,10 +11,10 @@ body {
 
 /* navbar.component.css */
 .navbar {
-  background-image: url('src/assets/headerImages/backround2.png');
+  background-image: url('src/assets/headerImages/navbarImage.png');
   background-size: cover;
   background-position: center;
-  height: 300px;
+  height: 400px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start; /* Ausrichtung am oberen Rand der Seite */
