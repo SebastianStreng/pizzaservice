@@ -7,19 +7,19 @@ import { AuthenticationService } from 'src/app/services/authentification-service
   selector: 'app-sign-in',
   templateUrl: './signIn.component.html',
   styleUrls: ['./signIn.component.css'],
-  providers: [DialogService]
+  providers: [DialogService],
 })
 export class SignInComponent implements OnInit {
   username = '';
   password = '';
   error = '';
 
-  ref!: DynamicDialogRef | undefined;
-
   constructor(
     private authService: AuthenticationService,
-     private router: Router, 
-     public dialogService: DialogService) {}
+    private router: Router,
+    public dialogService: DialogService,
+    public ref: DynamicDialogRef
+  ) {}
 
   ngOnInit(): void {}
 
@@ -27,9 +27,7 @@ export class SignInComponent implements OnInit {
     this.authService.login(this.username, this.password).subscribe(
       () => {
         this.router.navigate(['Customize']);
-        if (this.ref) {
-          this.ref.close();//doesnt work
-        }
+        this.ref.close(); 
       },
       (error) => {
         this.error = 'Invalid username or password';

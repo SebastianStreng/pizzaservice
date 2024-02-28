@@ -19,8 +19,14 @@
 ::ng-deep .p-card  {
   width: 100%;
   height: 100%;
-  background-image: url('src/assets/images/landingBackround.png');
+  background-image: url('src/assets/images/registerBackround.jpg');
   background-size: cover;
   background-position: center;
   z-index: -1;
+}
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
 }

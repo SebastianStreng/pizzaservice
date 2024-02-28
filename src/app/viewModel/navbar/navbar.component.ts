@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentification-service/authentification-service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,30 +11,14 @@ import { MenuItem } from 'primeng/api';
   //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnInit {
-  items: MenuItem[] | undefined;
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
-  activeItem: MenuItem | undefined;
-
-  AddToCart() {}
-
-  onActiveItemChange(event: MenuItem) {
-    this.activeItem = event;
+  signOut() {
+    this.authService.logout();
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['Landing']);
+    }
   }
 
-  ngOnInit(): void {
-    this.items = [
-      {
-        label: 'Pizza',
-        icon: 'pi pi-fw pi-file',
-      },
-      {
-        label: 'Contact',
-        icon: 'pi pi-fw pi-pencil',
-      },
-      {
-        label: 'About Us',
-        icon: 'pi pi-fw pi-user',
-      },
-    ];
-  }
+  ngOnInit(): void {}
 }

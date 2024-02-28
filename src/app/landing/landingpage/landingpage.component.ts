@@ -19,14 +19,14 @@ export class LandingpageComponent implements OnInit {
 openSignInDialog (){
   this.ref = this.dialogService
   .open(
-    SignInComponent, 
+    SignInComponent,
     { header: 'Please type in your Username and Password to proceed'});
 }
 
 openRegisterDialog(){
   this.ref = this.dialogService
   .open(
-    RegisterComponent, 
+    RegisterComponent,
     { header: 'Please register to order your first custom Pizza'});
 }
 

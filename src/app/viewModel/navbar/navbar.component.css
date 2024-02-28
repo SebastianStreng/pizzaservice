@@ -9,15 +9,14 @@ body {
   background-color: #f0f0f0;
 }
 
-/* navbar.component.css */
 .navbar {
-  background-image: url('src/assets/headerImages/navbarImage.png');
+  background-image: url('src/assets/headerImages/navbarImage2.png');
   background-size: cover;
   background-position: center;
   height: 400px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Ausrichtung am oberen Rand der Seite */
+  align-items: flex-start;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -26,8 +25,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: right; /* Diese Zeile korrigieren: sollte "flex-end" sein */
-  margin-left: auto; /* Elemente nach rechts schieben */
+  align-items: right;
+  margin-left: auto;
 }
 
 .navbar-link {
