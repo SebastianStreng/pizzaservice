@@ -21,12 +21,18 @@ export class CustomizerComponent implements OnInit {
 
   bases: base[] = [];  
   selectedBase! : base;
+
+  sauces: base [] = [];
+  selectedSauce!: base; 
+
   ingredients: Ingredient[] = [];
   selectedIngredients: Ingredient[] = [];
+
   order!: Order;
   orders: Order[] = [];
-  specialWish!: string;
   selectedOrder!: Order;
+
+  specialWish!: string;
   count: number = 0;
   totalPrice!: number;
 
@@ -53,6 +59,13 @@ export class CustomizerComponent implements OnInit {
       { id: 2, name: 'Dinkel', price: 1.50 },
       { id: 3, name: 'Extra dicker Rand', price: 2.00 },
       { id: 4, name: 'Rand mit Käse', price: 2.50 }
+    ];
+
+    this.sauces = [
+      { id: 1, name: 'Tomato Sauce', price: 0.50 },
+      { id: 2, name: 'BBQ Sauce', price: 1.00 },
+      { id: 3, name: 'Garlic Sauce', price: 0.75 },
+      { id: 4, name: 'No Sauce', price: 0.00 }
     ];
   }
 
