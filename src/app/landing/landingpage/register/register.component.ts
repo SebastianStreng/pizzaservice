@@ -93,8 +93,13 @@ export class RegisterComponent implements OnInit {
   private isUserAlreadyExists(newUser: User): boolean {
     return this.users.some(
       (user) =>
+      user.username === newUser.username ||
         user.username === newUser.username &&
-        user.firstName === newUser.firstName
+        user.firstName === newUser.firstName ||
+        user.firstName === newUser.firstName &&
+        user.lastName === newUser.lastName &&
+        user.streetName === newUser.streetName &&
+        user.houseNumber === newUser.houseNumber
     );
   }
 

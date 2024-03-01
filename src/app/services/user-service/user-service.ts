@@ -9,8 +9,8 @@ import { User } from 'src/app/interfaces/User';
   providedIn: 'root',
 })
 export class UserService {
-  // Adjust this URL to point to your PHP script handling API requests
-  baseUrl = 'http://localhost/api'; // Assuming 'api' is the folder where your PHP scripts are located
+
+  baseUrl = 'http://localhost/api'; 
 
   constructor(private http: HttpClient) {}
 
