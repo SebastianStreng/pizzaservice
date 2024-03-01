@@ -7,7 +7,7 @@ import { IngredientService } from 'src/app/services/ingredient-service/ingredien
 import { AuthenticationService } from 'src/app/services/authentification-service/authentification-service';
 import { User } from 'src/app/interfaces/User';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, toArray } from 'rxjs';
 import { Base } from 'src/app/interfaces/base';
 import { BaseService } from 'src/app/services/base-service/base-service';
 
@@ -21,7 +21,7 @@ export class CustomizerComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
   bases: Base[] = [];  
-  selectedBase! : Base;
+  selectedBase : Base = this.bases[0]; 
 
   sauces: Base [] = [];
   selectedSauce!: Base; 
@@ -59,6 +59,10 @@ export class CustomizerComponent implements OnInit {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['Landing']);
     }
+
+      //     this.selectedBase = this.bases[0]; 
+      //     this.selectedSauce = this.sauces[0]; 
+      //     this.selectedCheese = this.cheeses[0];
   }
 
   PlaceOrder() {
@@ -81,8 +85,27 @@ export class CustomizerComponent implements OnInit {
     this.ref.onClose.subscribe();
   }
 
+  GetSelectedBases () : Base[]{
+    const mergedIngredients: Base[] = [];
+
+    if (this.selectedBase) {
+      mergedIngredients.push(this.selectedBase);
+    }
+  
+    if (this.selectedSauce) {
+      mergedIngredients.push(this.selectedSauce);
+    }
+  
+    if (this.selectedCheese) {
+      mergedIngredients.push(this.selectedCheese);
+    }
+  
+    return mergedIngredients;
+  }
+
   AddToOrder() {
     const newOrder: Order = {
+      base: this.GetSelectedBases(),
       id: this.generateRandomValue(),
       ingredients: [...this.selectedIngredients],
       price:
@@ -146,16 +169,16 @@ export class CustomizerComponent implements OnInit {
         this.sauces = data.filter(item => item.type === 'sauce');
         this.cheeses = data.filter(item => item.type === 'cheese');
   
-        this.success = 'Successful retrieval of the ingredients';
+        this.success = 'Successful retrieval of the Bases';
       },
       error: (err) => {
         console.error(err);
         this.error = 'An error occurred while fetching data';
       },
-      complete: () => console.log('Ingredients fetch complete'),
+      complete: () => console.log('Bases fetch complete'),
     });
   }
-  
+
 
   getIngredients(): void {
     this.ingredientService.getAll().subscribe({
