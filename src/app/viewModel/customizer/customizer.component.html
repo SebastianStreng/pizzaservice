@@ -7,6 +7,22 @@
   <p-header style="font-size: 300%">
     Customize Your Own Pizza via Drag & Drop!</p-header
   >
+
+  <div class="flex-row flex-wrap gap-3">
+    <div *ngFor="let base of bases" class="flex align-items-center">
+      <p-radioButton
+        [name]="base.name"
+        [value]="base.name"
+        [(ngModel)]="selectedBase"
+        [inputId]="'ingredient' + base.id"
+      ></p-radioButton>
+      <label [for]="'ingredient' + base.id" class="ml-3">
+        {{ base.name }} - Price: {{ base.price | currency: '$' }}
+      </label>
+    </div>
+  </div>
+
+
   <p>
     Please choose your ingredients. Every pizza automatically includes tomato
     sauce and cheese!

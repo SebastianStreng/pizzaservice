@@ -8,6 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentification-service
 import { User } from 'src/app/interfaces/User';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { base } from 'src/app/interfaces/base';
 
 @Component({
   selector: 'app-customizer',
@@ -18,6 +19,8 @@ import { Observable } from 'rxjs';
 export class CustomizerComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
+  bases: base[] = [];  
+  selectedBase! : base;
   ingredients: Ingredient[] = [];
   selectedIngredients: Ingredient[] = [];
   order!: Order;
@@ -44,6 +47,13 @@ export class CustomizerComponent implements OnInit {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['Landing']);
     }
+
+    this.bases = [
+      { id: 1, name: 'Normal', price: 0.00 },
+      { id: 2, name: 'Dinkel', price: 1.50 },
+      { id: 3, name: 'Extra dicker Rand', price: 2.00 },
+      { id: 4, name: 'Rand mit Käse', price: 2.50 }
+    ];
   }
 
   PlaceOrder() {

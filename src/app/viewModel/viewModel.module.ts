@@ -14,6 +14,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { InputTextModule } from 'primeng/inputtext';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { CustomizerComponent } from './customizer/customizer.component';
@@ -39,7 +40,8 @@ import { InvoiceOverviewComponent } from './customizer/invoiceOverview/invoiceOv
     TabMenuModule,
     InputTextareaModule,
     InputTextModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    RadioButtonModule
   ],
   exports: [ NavbarComponent, CustomizerComponent],
 })
