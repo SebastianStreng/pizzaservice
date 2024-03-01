@@ -55,17 +55,17 @@ export class CustomizerComponent implements OnInit {
     }
 
     this.bases = [
-      { id: 1, name: 'Normal', price: 0.00 },
-      { id: 2, name: 'Dinkel', price: 1.50 },
-      { id: 3, name: 'Extra dicker Rand', price: 2.00 },
-      { id: 4, name: 'Rand mit Käse', price: 2.50 }
+      { id: 1, name: 'Normal', price: 0.00, type: 'dough' },
+      { id: 2, name: 'Spelt', price: 1.50, type: 'dough' },
+      { id: 3, name: 'Thick Crust', price: 2.00, type: 'dough' },
+      { id: 4, name: 'Cheese Crust', price: 2.50, type: 'dough' }
     ];
-
+  
     this.sauces = [
-      { id: 1, name: 'Tomato Sauce', price: 0.50 },
-      { id: 2, name: 'BBQ Sauce', price: 1.00 },
-      { id: 3, name: 'Garlic Sauce', price: 0.75 },
-      { id: 4, name: 'No Sauce', price: 0.00 }
+      { id: 1, name: 'Tomato Sauce', price: 0.50, type: 'sauce' },
+      { id: 2, name: 'BBQ Sauce', price: 1.00, type: 'sauce' },
+      { id: 3, name: 'Garlic Sauce', price: 0.75, type: 'sauce' },
+      { id: 4, name: 'No Sauce', price: 0.00, type: 'sauce' }
     ];
   }
 
