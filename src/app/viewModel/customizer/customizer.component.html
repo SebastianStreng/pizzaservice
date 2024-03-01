@@ -9,38 +9,57 @@
   >
 
 
-  <header style="margin-bottom: 10px; font-size: 1.5em;">Please choose your favorite pizza crust and sauce:</header>
+  <header style="margin-bottom: 10px; font-size: 1.5em;">Please choose your favorite pizza crust, sauce and cheese:</header>
 
   <div class="flex-row flex-wrap gap-3 radiobutton-group" style="margin-bottom: 60px;">
-  <ng-container *ngFor="let base of bases">
-    <div class="flex align-items-center mr-3">
-      <p-radioButton
-        [name]="base.name"
-        [value]="base.name"
-        [(ngModel)]="selectedBase"
-        [inputId]="'ingredient' + base.id"
-      ></p-radioButton>
-      <label [for]="'ingredient' + base.id" class="ml-1">
-        {{ base.name }} - Price: {{ base.price | currency: '$' }}
-      </label>
-    </div>
-  </ng-container>
 
-  <!-- Saucen -->
-  <ng-container *ngFor="let sauce of sauces">
-    <div class="flex align-items-center">
-      <p-radioButton
-        [name]="sauce.name"
-        [value]="sauce.name"
-        [(ngModel)]="selectedSauce"
-        [inputId]="'sauce' + sauce.id"
-      ></p-radioButton>
-      <label [for]="'sauce' + sauce.id" class="ml-1">
-        {{ sauce.name }} - Price: {{ sauce.price | currency: 'EUR' }}
-      </label>
-    </div>
-  </ng-container>
-</div>
+    <!-- Bases -->
+    <ng-container *ngFor="let base of bases">
+      <div class="flex align-items-center mr-3">
+        <p-radioButton
+          [name]="base.name"
+          [value]="base.name"
+          [(ngModel)]="selectedBase"
+          [inputId]="'ingredient' + base.id"
+        ></p-radioButton>
+        <label [for]="'ingredient' + base.id" class="ml-1">
+          {{ base.name }} - Price: {{ base.price | currency: '$' }}
+        </label>
+      </div>
+    </ng-container>
+  
+    <!-- Sauces -->
+    <ng-container *ngFor="let sauce of sauces">
+      <div class="flex align-items-center">
+        <p-radioButton
+          [name]="sauce.name"
+          [value]="sauce.name"
+          [(ngModel)]="selectedSauce"
+          [inputId]="'sauce' + sauce.id"
+        ></p-radioButton>
+        <label [for]="'sauce' + sauce.id" class="ml-1">
+          {{ sauce.name }} - Price: {{ sauce.price | currency: 'EUR' }}
+        </label>
+      </div>
+    </ng-container>
+  
+    <!-- Cheeses -->
+    <ng-container *ngFor="let cheese of cheeses">
+      <div class="flex align-items-center">
+        <p-radioButton
+          [name]="cheese.name"
+          [value]="cheese.name"
+          [(ngModel)]="selectedCheese"
+          [inputId]="'cheese' + cheese.id"
+        ></p-radioButton>
+        <label [for]="'cheese' + cheese.id" class="ml-1">
+          {{ cheese.name }} - Price: {{ cheese.price | currency: '$' }}
+        </label>
+      </div>
+    </ng-container>
+  
+  </div>
+  
 
 
 <header style="margin-bottom: 10px; font-size: 1.5em;">Choose your favorite ingredients by drag & drop:</header>

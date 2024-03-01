@@ -8,7 +8,8 @@ import { AuthenticationService } from 'src/app/services/authentification-service
 import { User } from 'src/app/interfaces/User';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { base } from 'src/app/interfaces/base';
+import { Base } from 'src/app/interfaces/base';
+import { BaseService } from 'src/app/services/base-service/base-service';
 
 @Component({
   selector: 'app-customizer',
@@ -19,11 +20,14 @@ import { base } from 'src/app/interfaces/base';
 export class CustomizerComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
-  bases: base[] = [];  
-  selectedBase! : base;
+  bases: Base[] = [];  
+  selectedBase! : Base;
 
-  sauces: base [] = [];
-  selectedSauce!: base; 
+  sauces: Base [] = [];
+  selectedSauce!: Base; 
+
+  cheeses: Base [] = [];
+  selectedCheese!: Base; 
 
   ingredients: Ingredient[] = [];
   selectedIngredients: Ingredient[] = [];
@@ -44,29 +48,17 @@ export class CustomizerComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
     private ingredientService: IngredientService,
+    private baseService: BaseService,
     private authService: AuthenticationService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getIngredients();
+    this.getBases(); 
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['Landing']);
     }
-
-    this.bases = [
-      { id: 1, name: 'Normal', price: 0.00, type: 'dough' },
-      { id: 2, name: 'Spelt', price: 1.50, type: 'dough' },
-      { id: 3, name: 'Thick Crust', price: 2.00, type: 'dough' },
-      { id: 4, name: 'Cheese Crust', price: 2.50, type: 'dough' }
-    ];
-  
-    this.sauces = [
-      { id: 1, name: 'Tomato Sauce', price: 0.50, type: 'sauce' },
-      { id: 2, name: 'BBQ Sauce', price: 1.00, type: 'sauce' },
-      { id: 3, name: 'Garlic Sauce', price: 0.75, type: 'sauce' },
-      { id: 4, name: 'No Sauce', price: 0.00, type: 'sauce' }
-    ];
   }
 
   PlaceOrder() {
@@ -144,6 +136,20 @@ export class CustomizerComponent implements OnInit {
       (total, order) => total + order.price,
       0
     );
+  }
+
+  getBases() : void{
+    this.baseService.getAll().subscribe({
+      next: (data: Base[]) => {
+        this.bases = data;
+        this.success = 'Successful retrieval of the ingredients';
+      },
+      error: (err) => {
+        console.error(err);
+        this.error = 'An error occurred while fetching data';
+      },
+      complete: () => console.log('ingredients fetch complete'),
+    });
   }
 
   getIngredients(): void {

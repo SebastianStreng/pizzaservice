@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Ingredient } from 'src/app/interfaces/ingredient';
-import { base } from 'src/app/interfaces/base';
+import { Base } from 'src/app/interfaces/base';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class BaseService {
 
   getAll() {
     return this.http
-      .get<{ data: base[] }>(`${this.baseUrl}/base`)
+      .get<{ data: Base[] }>(`${this.baseUrl}/base`)
       .pipe(
         tap((r) => console.log(r)),
         map((response) => response.data),
