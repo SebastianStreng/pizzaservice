@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Pizza } from '../../interfaces/pizza';
 import { throwError } from 'rxjs';
 import { User } from 'src/app/interfaces/User';
 

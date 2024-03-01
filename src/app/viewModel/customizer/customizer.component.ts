@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Order } from 'src/app/interfaces/order';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { InvoiceOverviewComponent } from 'src/app/dialogs/invoiceOverview/invoiceOverview.component';
+import { InvoiceOverviewComponent } from 'src/app/viewModel/customizer/invoiceOverview/invoiceOverview.component';
 import { IngredientService } from 'src/app/services/ingredient-service/ingredient-service';
 import { AuthenticationService } from 'src/app/services/authentification-service/authentification-service';
 import { User } from 'src/app/interfaces/User';

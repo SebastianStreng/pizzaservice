@@ -12,16 +12,19 @@ import { CardModule } from 'primeng/card';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { BrowserModule } from '@angular/platform-browser';
+import { InputTextModule } from 'primeng/inputtext';
 
-import { PizzaViewModelComponent } from './pizza-viewModel/pizza-viewModel.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PizzaService } from '../services/pizza-service/pizza-service';
 import { CustomizerComponent } from './customizer/customizer.component';
 import { MovingSlicesComponent } from '../specialEffects/movingSlices/movingSlices.component';
+import { InvoiceOverviewComponent } from './customizer/invoiceOverview/invoiceOverview.component';
+
 
 @NgModule({
-  declarations: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
+  declarations: [InvoiceOverviewComponent, NavbarComponent, CustomizerComponent],
   imports: [
+    BrowserModule,
     CommonModule,
     HttpClientModule,
     ButtonModule,
@@ -35,8 +38,9 @@ import { MovingSlicesComponent } from '../specialEffects/movingSlices/movingSlic
     CardModule,
     TabMenuModule,
     InputTextareaModule,
+    InputTextModule,
     DynamicDialogModule
   ],
-  exports: [PizzaViewModelComponent, NavbarComponent, CustomizerComponent],
+  exports: [ NavbarComponent, CustomizerComponent],
 })
 export class ViewModelModule {}
