@@ -2,49 +2,48 @@
 <app-navbar></app-navbar>
 <p-card
   class="card"
-  [style]="{ width: '1200px', height: '1600px', margin: 'auto' }"
+  [style]="{ width: '1200px', height: '1800px', margin: 'auto' }"
 >
   <p-header style="font-size: 300%">
     Customize Your Own Pizza via Drag & Drop!</p-header
   >
 
-  <div class="flex-row flex-wrap gap-3">
-    <!-- Teigplatten -->
-    <ng-container *ngFor="let base of bases">
-      <div class="flex align-items-center mr-3"> <!-- Hinzugefügtes 'mr-3' für Abstand zwischen den Radiobutton-Gruppen -->
-        <p-radioButton
-          [name]="base.name"
-          [value]="base.name"
-          [(ngModel)]="selectedBase"
-          [inputId]="'ingredient' + base.id"
-        ></p-radioButton>
-        <label [for]="'ingredient' + base.id" class="ml-1">
-          {{ base.name }} - Price: {{ base.price | currency: '$' }}
-        </label>
-      </div>
-    </ng-container>
-  
-    <!-- Saucen -->
-    <ng-container *ngFor="let sauce of sauces">
-      <div class="flex align-items-center">
-        <p-radioButton
-          [name]="sauce.name"
-          [value]="sauce.name"
-          [(ngModel)]="selectedSauce"
-          [inputId]="'sauce' + sauce.id"
-        ></p-radioButton>
-        <label [for]="'sauce' + sauce.id" class="ml-1">
-          {{ sauce.name }} - Price: {{ sauce.price | currency: 'EUR' }}
-        </label>
-      </div>
-    </ng-container>
-  </div>
-  
 
-  <p>
-    Please choose your ingredients. Every pizza automatically includes tomato
-    sauce and cheese!
-  </p>
+  <header style="margin-bottom: 10px; font-size: 1.5em;">Please choose your favorite pizza crust and sauce:</header>
+
+  <div class="flex-row flex-wrap gap-3 radiobutton-group" style="margin-bottom: 60px;">
+  <ng-container *ngFor="let base of bases">
+    <div class="flex align-items-center mr-3">
+      <p-radioButton
+        [name]="base.name"
+        [value]="base.name"
+        [(ngModel)]="selectedBase"
+        [inputId]="'ingredient' + base.id"
+      ></p-radioButton>
+      <label [for]="'ingredient' + base.id" class="ml-1">
+        {{ base.name }} - Price: {{ base.price | currency: '$' }}
+      </label>
+    </div>
+  </ng-container>
+
+  <!-- Saucen -->
+  <ng-container *ngFor="let sauce of sauces">
+    <div class="flex align-items-center">
+      <p-radioButton
+        [name]="sauce.name"
+        [value]="sauce.name"
+        [(ngModel)]="selectedSauce"
+        [inputId]="'sauce' + sauce.id"
+      ></p-radioButton>
+      <label [for]="'sauce' + sauce.id" class="ml-1">
+        {{ sauce.name }} - Price: {{ sauce.price | currency: 'EUR' }}
+      </label>
+    </div>
+  </ng-container>
+</div>
+
+
+<header style="margin-bottom: 10px; font-size: 1.5em;">Choose your favorite ingredients by drag & drop:</header>
 
   <div class="card">
     <p-pickList

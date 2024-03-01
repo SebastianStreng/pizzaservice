@@ -2,3 +2,38 @@
   display: block;
 }
 
+.flex-row {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-3 {
+  gap: 1.5rem; /* Ändere dies je nach dem gewünschten Abstand zwischen den Container */
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.mr-3 {
+  margin-right: 1.5rem; /* Ändere dies je nach dem gewünschten Abstand zwischen den Radiobutton-Gruppen */
+}
+
+.radiobutton-group {
+  margin-bottom: 1rem; /* Ändere dies je nach dem gewünschten Abstand zwischen den Radiobutton-Gruppen */
+}
+
+/* Füge weitere Styles nach Bedarf hinzu */
+
+/* Beispiel für die Anordnung der Radiobutton-Container nebeneinander */
+.radiobutton-group > div {
+  display: flex;
+}
+
+/* Beispiel für den Abstand zwischen Radiobutton und Label */
+.radiobutton-group .flex label {
+  margin-left: 0.5rem; /* Ändere dies je nach dem gewünschten Abstand zwischen Radiobutton und Label */
+}
