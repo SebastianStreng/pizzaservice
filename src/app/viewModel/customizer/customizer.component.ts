@@ -138,19 +138,24 @@ export class CustomizerComponent implements OnInit {
     );
   }
 
-  getBases() : void{
+  getBases(): void {
     this.baseService.getAll().subscribe({
       next: (data: Base[]) => {
-        this.bases = data;
+        // Filter bases, sauces, and cheeses based on type
+        this.bases = data.filter(item => item.type === 'dough');
+        this.sauces = data.filter(item => item.type === 'sauce');
+        this.cheeses = data.filter(item => item.type === 'cheese');
+  
         this.success = 'Successful retrieval of the ingredients';
       },
       error: (err) => {
         console.error(err);
         this.error = 'An error occurred while fetching data';
       },
-      complete: () => console.log('ingredients fetch complete'),
+      complete: () => console.log('Ingredients fetch complete'),
     });
   }
+  
 
   getIngredients(): void {
     this.ingredientService.getAll().subscribe({
