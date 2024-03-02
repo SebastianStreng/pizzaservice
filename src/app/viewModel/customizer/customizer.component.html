@@ -38,7 +38,7 @@
           [inputId]="'sauce' + sauce.id"
         ></p-radioButton>
         <label [for]="'sauce' + sauce.id" class="ml-1">
-          {{ sauce.name }} - Price: {{ sauce.price | currency: 'EUR' }}
+          {{ sauce.name }} - Price: {{ sauce.price | currency: '$' }}
         </label>
       </div>
     </ng-container>

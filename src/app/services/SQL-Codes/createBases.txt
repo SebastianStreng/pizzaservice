@@ -14,15 +14,15 @@ CREATE TABLE IF NOT EXISTS bases (
 
 -- Insert data into the 'bases' table
 INSERT INTO bases (id, name, price, type) VALUES
-    (1, 'Normal', 0.00, 'dough'),
-    (2, 'Spelt', 1.50, 'dough'),
-    (3, 'Thick Crust', 2.00, 'dough'),
-    (4, 'Cheese Crust', 2.50, 'dough'),
-    (5, 'Tomato Sauce', 0.50, 'sauce'),
-    (6, 'BBQ Sauce', 1.00, 'sauce'),
-    (7, 'Garlic Sauce', 0.75, 'sauce'),
+    (1, 'Normal', 4.00, 'dough'),
+    (2, 'Spelt', 4.00, 'dough'),
+    (3, 'Thick Crust', 5.00, 'dough'),
+    (4, 'Cheese Crust', 6.00, 'dough'),
+    (5, 'Tomato Sauce', 1.00, 'sauce'),
+    (6, 'BBQ Sauce', 2.00, 'sauce'),
+    (7, 'Garlic Sauce', 2.00, 'sauce'),
     (8, 'No Sauce', 0.00, 'sauce'),
-    (9, 'Cheddar', 1.50, 'cheese'),
-    (10, 'Edamer', 2.00, 'cheese'),
-    (11, 'Emmentaler', 2.50, 'cheese'),
+    (9, 'Edamer', 2.00, 'cheese'),
+    (10, 'Emmentaler', 2.00, 'cheese'),
+    (11, 'Cheddar', 1.50, 'cheese'),
     (12, 'No Cheese', 0.00, 'cheese');

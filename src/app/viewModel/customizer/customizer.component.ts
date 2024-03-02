@@ -29,6 +29,8 @@ export class CustomizerComponent implements OnInit {
   cheeses: Base [] = [];
   selectedCheese!: Base; 
 
+  selectedBases: Base[] = []; 
+
   ingredients: Ingredient[] = [];
   selectedIngredients: Ingredient[] = [];
 
@@ -63,9 +65,7 @@ export class CustomizerComponent implements OnInit {
 
     
 
-      //     this.selectedBase = this.bases[0]; 
-      //     this.selectedSauce = this.sauces[0]; 
-      //     this.selectedCheese = this.cheeses[0];
+
   }
 
   PlaceOrder() {
@@ -90,7 +90,7 @@ export class CustomizerComponent implements OnInit {
 
 
   //its an array of string, NOT of base, properties are lost , see in logs
-  GetSelectedBases(): Base[] {
+  GetSelectedBases(){
     const selectedBases: Base[] = [];
   
     if (this.selectedBase) {
@@ -106,17 +106,21 @@ export class CustomizerComponent implements OnInit {
     }
   
     console.log('Selected Bases:', selectedBases);
-    return selectedBases;
+    this.selectedBases = selectedBases; 
   }
   
 
   AddToOrder() {
+    this.GetSelectedBases(); 
     const newOrder: Order = {
-      base: this.GetSelectedBases(),
+      base: this.selectedBases,
       id: this.generateRandomValue(),
       ingredients: [...this.selectedIngredients],
       price:
-        8 +
+      Number(this.selectedBases.reduce(
+        (total, base) => total + base.price,
+        0
+      )) +
         Number(this.selectedIngredients.reduce(
           (total, ingredient) => total + ingredient.price,
           0
@@ -177,6 +181,10 @@ export class CustomizerComponent implements OnInit {
         this.sauces = data.filter(item => item.type === 'sauce');
         this.cheeses = data.filter(item => item.type === 'cheese');
   
+        this.selectedBase = this.bases[0]; 
+        this.selectedSauce = this.sauces[0]; 
+        this.selectedCheese = this.cheeses[0];
+
         this.success = 'Successful retrieval of the Bases';
       },
       error: (err) => {

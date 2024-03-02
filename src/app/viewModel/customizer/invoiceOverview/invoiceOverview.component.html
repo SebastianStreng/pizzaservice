@@ -50,6 +50,7 @@
   >
     <ng-template pTemplate="header">
       <tr>
+        <th>Base</th>
         <th>Ingredients</th>
         <th>Price</th>
         <th>Special Wishes</th>
@@ -58,6 +59,13 @@
     <ng-template pTemplate="body" let-order>
       <tr [pSelectableRow]="order"></tr>
       <tr>
+        <td>
+          <ul>
+            <li *ngFor="let base of order.base">
+              {{ base.name }}
+            </li>
+          </ul>
+        </td>
         <td>
           <ul>
             <li *ngFor="let ingredient of order.ingredients">
