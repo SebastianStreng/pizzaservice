@@ -18,7 +18,7 @@
       <div class="flex align-items-center mr-3">
         <p-radioButton
           [name]="base.name"
-          [value]="base.name"
+          [value]="base"
           [(ngModel)]="selectedBase"
           [inputId]="'ingredient' + base.id"
         ></p-radioButton>
@@ -33,7 +33,7 @@
       <div class="flex align-items-center">
         <p-radioButton
           [name]="sauce.name"
-          [value]="sauce.name"
+          [value]="sauce"
           [(ngModel)]="selectedSauce"
           [inputId]="'sauce' + sauce.id"
         ></p-radioButton>
@@ -48,7 +48,7 @@
       <div class="flex align-items-center">
         <p-radioButton
           [name]="cheese.name"
-          [value]="cheese.name"
+          [value]="cheese"
           [(ngModel)]="selectedCheese"
           [inputId]="'cheese' + cheese.id"
         ></p-radioButton>
@@ -171,6 +171,7 @@
             severity="danger"
           ></p-button>
         </th>
+        <th>Base</th>
         <th>Ingredients</th>
         <th>Price</th>
         <th>Special Wishes</th>
@@ -183,6 +184,15 @@
           <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger"
           (onClick)="DeleteSelectedOrder(order)"></p-button>
       </td>
+
+      <td>
+        <ul>
+          <li *ngFor="let base of order.base">
+            {{ base.name }}
+          </li>
+        </ul>
+      </td>
+      
         <td>
           <ul>
             <li *ngFor="let ingredient of order.ingredients">
@@ -190,6 +200,7 @@
             </li>
           </ul>
         </td>
+
         <td>{{ order.price }}</td>
         <td>{{ order.specialWish }}</td>
       </tr>

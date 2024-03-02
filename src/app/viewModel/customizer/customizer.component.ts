@@ -21,7 +21,7 @@ export class CustomizerComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
   bases: Base[] = [];  
-  selectedBase : Base = this.bases[0]; 
+  selectedBase! : Base; 
 
   sauces: Base [] = [];
   selectedSauce!: Base; 
@@ -56,9 +56,12 @@ export class CustomizerComponent implements OnInit {
   ngOnInit(): void {
     this.getIngredients();
     this.getBases(); 
+
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['Landing']);
     }
+
+    
 
       //     this.selectedBase = this.bases[0]; 
       //     this.selectedSauce = this.sauces[0]; 
@@ -85,23 +88,27 @@ export class CustomizerComponent implements OnInit {
     this.ref.onClose.subscribe();
   }
 
-  GetSelectedBases () : Base[]{
-    const mergedIngredients: Base[] = [];
 
+  //its an array of string, NOT of base, properties are lost , see in logs
+  GetSelectedBases(): Base[] {
+    const selectedBases: Base[] = [];
+  
     if (this.selectedBase) {
-      mergedIngredients.push(this.selectedBase);
+      selectedBases.push(this.selectedBase);
     }
   
     if (this.selectedSauce) {
-      mergedIngredients.push(this.selectedSauce);
+      selectedBases.push(this.selectedSauce);
     }
   
     if (this.selectedCheese) {
-      mergedIngredients.push(this.selectedCheese);
+      selectedBases.push(this.selectedCheese);
     }
   
-    return mergedIngredients;
+    console.log('Selected Bases:', selectedBases);
+    return selectedBases;
   }
+  
 
   AddToOrder() {
     const newOrder: Order = {
@@ -116,6 +123,7 @@ export class CustomizerComponent implements OnInit {
         )),
       specialWish: this.specialWish,
     };
+    console.log('order: ', newOrder)
     this.orders.push(newOrder);
     this.RestoreOrder();
 
