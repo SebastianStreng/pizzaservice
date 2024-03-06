@@ -25,6 +25,13 @@ export class InvoiceOverviewComponent implements OnInit {
 
   totalPrice!: number;
   orders: Order[] = [];
+  firstName!: string; 
+  lastName! : string; 
+  streetName!: string; 
+  houseNumber!: number;
+  postalcode!: string; 
+  cityName!: string; 
+   //need to write dynamic dialog with bestätigung
   currentUser!: User;
 
   ngOnInit(): void {
@@ -32,5 +39,9 @@ export class InvoiceOverviewComponent implements OnInit {
     this.totalPrice = this.config.data.totalPriceProperty;
     this.currentUser = this.authService.getCurrentUser(); 
     console.log("current User:", this.currentUser)
+  }
+
+  orderNow(){
+
   }
 }
