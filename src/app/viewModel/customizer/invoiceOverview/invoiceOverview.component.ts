@@ -31,5 +31,6 @@ export class InvoiceOverviewComponent implements OnInit {
     this.orders = this.config.data.ordersProperty;
     this.totalPrice = this.config.data.totalPriceProperty;
     this.currentUser = this.authService.getCurrentUser(); 
+    console.log("current User:", this.currentUser)
   }
 }

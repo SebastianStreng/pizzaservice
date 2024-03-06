@@ -57,15 +57,12 @@ export class CustomizerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIngredients();
+    
     this.getBases(); 
 
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['Landing']);
     }
-
-    
-
-
   }
 
   PlaceOrder() {
