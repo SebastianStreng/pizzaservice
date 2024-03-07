@@ -7,33 +7,33 @@
 <div class = "CredentialsContainer">
 <div class="horizontal-container">
     <span class="p-float-label">
-        <input pInputText id="firstName" [(ngModel)]="currentUser.firstName"/>
+        <input pInputText id="firstName" [(ngModel)]="firstName"/>
         <label for="firstName">First Name</label>
     </span>
     <span class="p-float-label" style="margin: 20px;">
-        <input pInputText id="lastName" [(ngModel)]="currentUser.lastName"/>
+        <input pInputText id="lastName" [(ngModel)]="lastName"/>
         <label for="lastName">Last Name</label>
     </span>
 </div>
 
 <div class="horizontal-container">
     <span class="p-float-label">
-        <input pInputText id="streetname" [(ngModel)]="currentUser.streetName"/>
+        <input pInputText id="streetname" [(ngModel)]="streetName"/>
         <label for="streetname">Streetname</label>
     </span>
     <span class="p-float-label" style="margin: 20px;">
-        <input pInputText id="housenumber" [(ngModel)]="currentUser.houseNumber"/>
+        <input pInputText id="housenumber" [(ngModel)]="houseNumber"/>
         <label for="housenumber">Housenumber</label>
     </span>
 </div>
 
 <div class="horizontal-container">
     <span class="p-float-label">
-        <input pInputText id="postalCode" [(ngModel)]="currentUser.postalCode"/>
+        <input pInputText id="postalCode" [(ngModel)]="postalcode"/>
         <label for="postalCode">Postal Code</label>
     </span>
     <span class="p-float-label" style="margin: 20px;">
-        <input pInputText id="cityname" [(ngModel)]="currentUser.city"/>
+        <input pInputText id="cityname" [(ngModel)]="cityName"/>
         <label for="cityname">City</label>
     </span>
 </div>
@@ -84,7 +84,12 @@
     </ng-template>
   </p-table>
   <div style="text-align: right">
-    <p-button label="Order Now"  icon="pi pi-check" iconPos="right"></p-button>
+    <p-button 
+    label="Order Now"  
+    icon="pi pi-check" 
+    iconPos="right" 
+    (onClick)="orderNow()"
+    ></p-button>
   </div>
 </div>
 </p-card>

@@ -21,7 +21,6 @@ export class IngredientService {
         map((ingredients) =>
           ingredients.map((ingredient) => ({
             name: ingredient.name,
-            vegan: ingredient.vegan,
             price: Number(ingredient.price),
           }))
         ),

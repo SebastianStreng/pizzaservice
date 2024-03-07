@@ -20,10 +20,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CustomizerComponent } from './customizer/customizer.component';
 import { MovingSlicesComponent } from '../specialEffects/movingSlices/movingSlices.component';
 import { InvoiceOverviewComponent } from './customizer/invoiceOverview/invoiceOverview.component';
+import { FormalInvoiceComponent } from './customizer/formalInvoice/formalInvoice.component';
 
 
 @NgModule({
-  declarations: [InvoiceOverviewComponent, NavbarComponent, CustomizerComponent],
+  declarations: [InvoiceOverviewComponent, NavbarComponent, CustomizerComponent, FormalInvoiceComponent],
   imports: [
     BrowserModule,
     CommonModule,
